@@ -26,11 +26,22 @@ engine = create_engine(url)
 with engine.begin() as conn:
     conn.execute(text("CREATE SCHEMA IF NOT EXISTS raw"))
 
-# 3. Read the CSV into a DataFrame
-df = pd.read_csv("data/raw/olist_customers_dataset.csv", dtype=str)
+files = {"olist_customers_dataset.csv": "customers",
+         "olist_geolocation_dataset.csv": "geolocation",
+         "olist_order_items_dataset.csv": "order_items",
+         "olist_order_payments_dataset.csv": "order_payments",
+         "olist_order_reviews_dataset.csv": "order_reviews",
+         "olist_orders_dataset.csv": "orders",
+         "olist_products_dataset.csv": "products",
+         "olist_sellers_dataset.csv": "sellers",
+         "product_category_name_translation.csv": "category_name"}
 
-# 4. Write the DataFrame to the table raw.customers
-df.to_sql("customers", engine, schema="raw", if_exists="replace", index=False)
-
-# 5. Print how many rows were loaded
-print(len(df))
+for file_name, table_name in files.items():
+    # Read the CSV into a DataFrame
+    cur_df = pd.read_csv(f"data/raw/{file_name}", dtype=str)
+    
+    # Write the DataFrame to the table raw.customers
+    cur_df.to_sql(f"{table_name}", engine, schema= "raw", if_exists= "replace", index=False)
+    
+    # Print how many rows were loaded
+    print(f"{table_name}: {len(cur_df)} rows")
