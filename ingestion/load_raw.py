@@ -16,7 +16,7 @@ host = os.getenv("POSTGRES_HOST")
 port = os.getenv("POSTGRES_PORT")
 database = os.getenv("POSTGRES_DB")
 
-# Build the connection URL in this format:
+# Build the connection URL
 url = f"postgresql+psycopg://{user}:{password}@{host}:{port}/{database}"
 
 # Create the engine
@@ -40,7 +40,7 @@ for file_name, table_name in files.items():
     # Read the CSV into a DataFrame
     cur_df = pd.read_csv(f"data/raw/{file_name}", dtype=str)
     
-    # Write the DataFrame to the table raw.customers
+    # Write the DataFrame to the table raw.table_name
     cur_df.to_sql(f"{table_name}", engine, schema= "raw", if_exists= "replace", index=False)
     
     # Print how many rows were loaded
