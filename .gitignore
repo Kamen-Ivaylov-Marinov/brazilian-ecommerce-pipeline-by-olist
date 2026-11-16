@@ -1,0 +1,10 @@
+# Data: too large for GitHub, and not ours to republish
+data/
+
+# Secrets such as passwords
+.env
+
+# Python
+__pycache__/
+venv/
+.venv/
