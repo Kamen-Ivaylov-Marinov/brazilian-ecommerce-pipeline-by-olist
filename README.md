@@ -1,3 +1,7 @@
+# Brazilian E-Commerce Data Pipeline
+
+An end-to-end batch data pipeline on the Olist e-commerce dataset, built with Python, PostgreSQL, dbt and Airflow, all running in Docker.
+
 ## Dataset
 
 This project uses the [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
