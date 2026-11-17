@@ -19,6 +19,7 @@ An end-to-end batch data pipeline on the Olist e-commerce dataset. Python loads 
 - **Frankfurter API**: daily European Central Bank exchange rates (free, no API key)
 - **dbt** and **Airflow**: planned
 
+##How it works
 <img width="822" height="437" alt="image" src="https://github.com/user-attachments/assets/ed3e5cd6-b8b1-4d53-9474-0942759b64f6" />
 
 
